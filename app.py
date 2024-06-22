@@ -3,17 +3,15 @@ import logging
 from aiogram import Bot, Dispatcher, executor, types
 from default_button import (menu_keyboard, menu_detail, mahsulot_button, menu_kiyim, menu_avto, menu_detail4,
                             menu_detail5, menu_detail6, menu_detail7, menu_detail8, rang)
-import asyncio
+
 from dotenv import load_dotenv
 
 load_dotenv()
 
 API_TOKEN = os.getenv("API_TOKEN")
 
-# Configure logging
 logging.basicConfig(level=logging.INFO)
 
-# Initialize bot and dispatcher
 bot = Bot(token=API_TOKEN)
 dp = Dispatcher(bot)
 
@@ -72,7 +70,6 @@ async def show_menu(message: types.Message):
     button1 = types.InlineKeyboardButton(text="➖", callback_data="option1")
     button2 = types.InlineKeyboardButton(text="1", callback_data="option2")
     button3 = types.InlineKeyboardButton(text="➕", callback_data="option3")
-    #button4 = types.InlineKeyboardButton(text="Back", reply_markup=menu_detail
     keyboard.add(button1, button2, button3)
     await bot.send_message(message.chat.id, "Mahsulot sonini tanlang: ", reply_markup=keyboard)
 
